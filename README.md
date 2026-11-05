@@ -64,11 +64,13 @@ The following classification models were evaluated:
 
 Because failures are relatively rare, evaluation focused on precision, recall, F1-score, ROC-AUC, PR-AUC, and the confusion matrix rather than accuracy alone.
 
-### 3. Threshold selection
+### 3. Threshold Selection
 
 The Random Forest classification threshold was evaluated using a validation subset of the training data. A threshold of **0.30** was selected as a practical balance between detecting failures and limiting false alarms.
 
 The threshold is a configurable decision setting. In a real deployment, it should be selected according to operational priorities and the relative costs of missed failures and unnecessary maintenance alerts.
+
+**Evaluation note:** The model was evaluated on the test set using the selected threshold. The test set was also examined during project development, so these results should be interpreted as a held-out evaluation within this project, rather than as a completely untouched final assessment.
 
 ## Model Results
 
@@ -98,6 +100,9 @@ These results illustrate the trade-off between detecting failures and generating
 
 A scenario-based cost analysis was developed to explore how predictive maintenance could affect costs under different assumed prevention rates.
 
+ **Important:** This business-impact analysis uses illustrative cost assumptions and hypothetical maintenance-prevention rates. The estimated savings are scenario-based calculations, not measured operational results or Arla Foods benchmarks. The assumptions would need to be validated with real manufacturing and maintenance data before being used for business decisions.
+
+
 ### Illustrative assumptions
 
 | Cost item | Assumption |
@@ -120,6 +125,12 @@ The analysis assumes detected failures receive planned maintenance and explores 
 | 100% | €159,000 | €181,000 | 53.24% |
 
 > **These figures are illustrative scenario calculations—not measured savings, actual Arla costs, or a forecast of real-world financial performance.** The analysis excludes implementation, monitoring, and other operational costs. The assumed costs and prevention rates would need to be validated with real manufacturing data.
+
+### Estimated Savings by Assumed Prevention Rate
+
+![Illustrative savings by assumed prevention rate](reports/figures/illustrative_savings_chart.png)
+
+The chart illustrates how estimated savings vary with the assumed effectiveness of planned maintenance. These figures depend on the stated cost assumptions and are not measured operational savings.
 
 ## Repository Structure
 
