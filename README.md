@@ -64,11 +64,13 @@ The following classification models were evaluated:
 
 Because failures are relatively rare, evaluation focused on precision, recall, F1-score, ROC-AUC, PR-AUC, and the confusion matrix rather than accuracy alone.
 
-### 3. Threshold selection
+### 3. Threshold Selection
 
 The Random Forest classification threshold was evaluated using a validation subset of the training data. A threshold of **0.30** was selected as a practical balance between detecting failures and limiting false alarms.
 
 The threshold is a configurable decision setting. In a real deployment, it should be selected according to operational priorities and the relative costs of missed failures and unnecessary maintenance alerts.
+
+**Evaluation note:** The model was evaluated on the test set using the selected threshold. The test set was also examined during project development, so these results should be interpreted as a held-out evaluation within this project, rather than as a completely untouched final assessment.
 
 ## Model Results
 
