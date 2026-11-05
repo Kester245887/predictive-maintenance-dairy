@@ -450,3 +450,35 @@ elif page == "Business Impact":
         "monitoring, and other operating costs. Actual savings would "
         "depend on real equipment data and validated assumptions."
     )
+    
+    if page == "Overview":
+        st.header("Project Overview")
+
+    st.write(
+        """
+        This dashboard demonstrates how a machine-learning model can help
+        identify equipment at risk of failure and support maintenance planning.
+
+        The dataset is synthetic and represents generic industrial equipment.
+        This is an independent portfolio project, not an implementation
+        using Arla Foods data.
+        """
+    )
+
+    col1, col2, col3, col4 = st.columns(4)
+
+    col1.metric("Dataset observations", "10,000")
+    col2.metric("Observed failures", "339")
+    col3.metric("Failure rate", "3.39%")
+    col4.metric("Random Forest test recall", "67.6%")
+
+    st.subheader("What this project demonstrates")
+
+    st.markdown(
+        """
+        - Exploratory data analysis of equipment operating conditions
+        - Machine-learning classification of machine failure
+        - Decision-threshold selection to balance failure detection and false alarms
+        - Illustrative business-impact scenarios for planned maintenance
+        """
+    )
