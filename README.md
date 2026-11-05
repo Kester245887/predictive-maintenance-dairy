@@ -126,6 +126,12 @@ The analysis assumes detected failures receive planned maintenance and explores 
 
 > **These figures are illustrative scenario calculations—not measured savings, actual Arla costs, or a forecast of real-world financial performance.** The analysis excludes implementation, monitoring, and other operational costs. The assumed costs and prevention rates would need to be validated with real manufacturing data.
 
+### Estimated Savings by Assumed Prevention Rate
+
+![Illustrative savings by assumed prevention rate](reports/figures/illustrative_savings_chart.png)
+
+The chart illustrates how estimated savings vary with the assumed effectiveness of planned maintenance. These figures depend on the stated cost assumptions and are not measured operational savings.
+
 ## Repository Structure
 
 ```text
