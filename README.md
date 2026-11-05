@@ -99,6 +99,7 @@ These results illustrate the trade-off between detecting failures and generating
 ## Illustrative Business-Impact Analysis
 
 A scenario-based cost analysis was developed to explore how predictive maintenance could affect costs under different assumed prevention rates.
+
  **Important:** This business-impact analysis uses illustrative cost assumptions and hypothetical maintenance-prevention rates. The estimated savings are scenario-based calculations, not measured operational results or Arla Foods benchmarks. The assumptions would need to be validated with real manufacturing and maintenance data before being used for business decisions.
 
 
