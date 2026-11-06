@@ -112,8 +112,6 @@ The three most influential features were:
 
 Together, these features accounted for approximately 80.31% of the model's impurity-based feature importance.
 
-![SHAP Feature Importance](reports/figures/shap_feature_importance.png)
-
 ### SHAP Analysis
 
 SHAP was used to examine both global model behaviour and individual predictions. The analysis used a sample of 300 observations from the test dataset.
