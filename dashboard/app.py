@@ -1,8 +1,6 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 import joblib
-import matplotlib.pyplot as plt
 from pathlib import Path
 
 # --------------------------------------------------
@@ -68,6 +66,7 @@ page = st.sidebar.radio(
         "Overview",
         "Failure Prediction",
         "Model Performance",
+        "Model Explainability",
         "Business Impact"
     ]
 )
@@ -300,7 +299,82 @@ elif page == "Model Performance":
         "These results should not be described as a completely "
         "untouched final evaluation."
     )
-    
+  
+
+# --------------------------------------------------
+# MODEL EXPLAINABILITY PAGE
+# --------------------------------------------------
+
+elif page == "Model Explainability":
+
+    st.header("Model Explainability")
+
+    st.write(
+        """
+        This page explains which equipment characteristics influence
+        the Random Forest model's failure predictions.
+
+        The analysis uses Random Forest feature importance and SHAP
+        (SHapley Additive exPlanations) to improve model transparency.
+        """
+    )
+
+    st.subheader("Random Forest Feature Importance")
+
+    st.write(
+        """
+        The model's impurity-based feature importance identifies
+        rotational speed, torque and tool wear as its three most
+        influential predictors.
+        """
+    )
+
+    st.subheader("SHAP Feature Importance")
+
+    st.image(
+        PROJECT_DIR / "reports" / "figures" / "shap_feature_importance.png",
+        caption="Global SHAP feature importance",
+        use_container_width=True
+    )
+
+    st.subheader("SHAP Beeswarm Plot")
+
+    st.write(
+        """
+        The beeswarm plot shows how feature values influence model
+        predictions across the sampled observations. Positive SHAP
+        values push predictions towards failure, while negative values
+        push them away from failure.
+        """
+    )
+
+    st.image(
+        PROJECT_DIR / "reports" / "figures" / "shap_beeswarm.png",
+        caption="SHAP summary plot for failure predictions",
+        use_container_width=True
+    )
+
+    st.subheader("Individual Prediction Explanation")
+
+    st.write(
+        """
+        The waterfall plot explains an individual prediction for
+        machine 4701, which was correctly classified as a non-failure.
+        """
+    )
+
+    st.image(
+        PROJECT_DIR / "reports" / "figures" / "shap_waterfall_machine_4701.png",
+        caption="SHAP waterfall explanation for machine 4701",
+        use_container_width=True
+    )
+
+    st.caption(
+        "SHAP explanations describe the behaviour of this trained model. "
+        "They do not establish causal relationships between sensor "
+        "measurements and equipment failures."
+    )
+  
     # --------------------------------------------------
 # BUSINESS IMPACT PAGE
 # --------------------------------------------------
@@ -449,36 +523,4 @@ elif page == "Business Impact":
         "Illustrative scenario only. It excludes implementation, "
         "monitoring, and other operating costs. Actual savings would "
         "depend on real equipment data and validated assumptions."
-    )
-    
-    if page == "Overview":
-        st.header("Project Overview")
-
-    st.write(
-        """
-        This dashboard demonstrates how a machine-learning model can help
-        identify equipment at risk of failure and support maintenance planning.
-
-        The dataset is synthetic and represents generic industrial equipment.
-        This is an independent portfolio project, not an implementation
-        using Arla Foods data.
-        """
-    )
-
-    col1, col2, col3, col4 = st.columns(4)
-
-    col1.metric("Dataset observations", "10,000")
-    col2.metric("Observed failures", "339")
-    col3.metric("Failure rate", "3.39%")
-    col4.metric("Random Forest test recall", "67.6%")
-
-    st.subheader("What this project demonstrates")
-
-    st.markdown(
-        """
-        - Exploratory data analysis of equipment operating conditions
-        - Machine-learning classification of machine failure
-        - Decision-threshold selection to balance failure detection and false alarms
-        - Illustrative business-impact scenarios for planned maintenance
-        """
     )
