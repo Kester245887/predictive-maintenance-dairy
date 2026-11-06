@@ -24,4 +24,3 @@ desktop.ini
 *.log
 
 # Model artifacts (we will decide later which models to publish)
-models/
