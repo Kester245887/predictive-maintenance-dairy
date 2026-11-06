@@ -112,7 +112,7 @@ The three most influential features were:
 
 Together, these features accounted for approximately 80.31% of the model's impurity-based feature importance.
 
-![Random Forest Feature Importance](reports/figures/feature_importance.png)
+![SHAP Feature Importance](reports/figures/shap_feature_importance.png)
 
 ### SHAP Analysis
 
