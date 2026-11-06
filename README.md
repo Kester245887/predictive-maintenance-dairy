@@ -96,6 +96,51 @@ At the selected threshold, the model detected 46 of 68 failures and missed 22. I
 
 These results illustrate the trade-off between detecting failures and generating alerts that may not correspond to actual failures.
 
+## Model Interpretability and Explainability
+
+To improve model transparency, feature importance analysis and SHAP (SHapley Additive exPlanations) were applied to the trained Random Forest classifier.
+
+### Random Forest Feature Importance
+
+The three most influential features were:
+
+| Feature | Importance |
+|---|---:|
+| Rotational speed | 30.99% |
+| Torque | 29.28% |
+| Tool wear | 20.04% |
+
+Together, these features accounted for approximately 80.31% of the model's impurity-based feature importance.
+
+![Random Forest Feature Importance](reports/figures/feature_importance.png)
+
+### SHAP Analysis
+
+SHAP was used to examine both global model behaviour and individual predictions. The analysis used a sample of 300 observations from the test dataset.
+
+The SHAP summary analysis identified torque, rotational speed and tool wear as the three most influential features, broadly agreeing with the Random Forest feature-importance results.
+
+![SHAP Feature Importance](reports/figures/shap_feature_importance.png)
+
+The SHAP beeswarm plot further illustrated how different feature values contributed towards or away from the model's machine-failure predictions.
+
+![SHAP Beeswarm Plot](reports/figures/shap_beeswarm.png)
+
+### Individual Prediction Explanation
+
+A SHAP waterfall plot was generated for machine 4701.
+
+- Estimated failure probability: approximately 0%.
+- Decision threshold: 0.30.
+- Predicted outcome: No failure.
+- Actual dataset outcome: No failure.
+
+The waterfall plot showed how the individual feature contributions moved the prediction from the baseline towards a non-failure outcome.
+
+![SHAP Waterfall Plot](reports/figures/shap_waterfall_machine_4701.png)
+
+**Interpretation note:** Feature importance and SHAP values describe model behaviour, not causal relationships. The analysis uses the synthetic UCI AI4I 2020 dataset and does not represent actual Arla Foods equipment or operational data.
+
 ## Illustrative Business-Impact Analysis
 
 A scenario-based cost analysis was developed to explore how predictive maintenance could affect costs under different assumed prevention rates.
